@@ -1,0 +1,687 @@
+/* Font professionali - Inter e JetBrains Mono */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #000000;
+  min-height: 100vh;
+  padding: 0;
+  color: #e0e0e0;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+  min-height: 100vh;
+}
+
+header {
+  background: #000000;
+  border-bottom: 1px solid #1a1a1a;
+  padding: 2rem 3rem;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  font-family: 'Inter', sans-serif;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #888;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Tabs - Stile minimalista */
+.tabs {
+  display: flex;
+  background: #000000;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #666;
+  transition: all 0.2s;
+  border-bottom: 2px solid transparent;
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tab-btn:hover {
+  color: #fff;
+  background: #0a0a0a;
+}
+
+.tab-btn.active {
+  color: #fff;
+  border-bottom-color: #00ff88;
+  background: #0a0a0a;
+}
+
+.tab-content {
+  display: none;
+  padding: 2rem 3rem;
+  background: #000000;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Match Controls */
+.match-controls {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  padding: 1.5rem;
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+  border-radius: 4px;
+}
+
+.team-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.team-selector label {
+  font-weight: 500;
+  color: #888;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.team-selector select {
+  padding: 0.5rem 1rem;
+  border: 1px solid #1a1a1a;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  background: #000000;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.team-selector select:hover {
+  border-color: #333;
+}
+
+.team-selector select:focus {
+  outline: none;
+  border-color: #00ff88;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-left: auto;
+}
+
+/* Bottoni - Stile developer/AI-proof */
+.btn {
+  padding: 0.6rem 1.2rem;
+  border: 1px solid #1a1a1a;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: #000000;
+  color: #fff;
+}
+
+.btn-primary {
+  border-color: #00ff88;
+  color: #00ff88;
+}
+
+.btn-primary:hover {
+  background: #00ff88;
+  color: #000;
+  border-color: #00ff88;
+}
+
+.btn-secondary {
+  border-color: #666;
+  color: #666;
+}
+
+.btn-secondary:hover {
+  background: #666;
+  color: #000;
+  border-color: #666;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #888;
+  cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #00ff88;
+}
+
+/* Match Info */
+.match-info {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+  border-radius: 4px;
+}
+
+.score {
+  font-size: 3rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+  color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.score span:first-child,
+.score span:last-child {
+  font-size: 1.2rem;
+  color: #888;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+}
+
+.match-time {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 0.9rem;
+  color: #666;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Field - Campo nero con linee bianche */
+#field-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+#field {
+  position: relative;
+  width: 900px;
+  height: 540px;
+  background: #000000;
+  border: 2px solid #333;
+  border-radius: 2px;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.1);
+}
+
+#center-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: #333;
+}
+
+#center-circle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
+  border: 1px solid #333;
+  border-radius: 50%;
+}
+
+.goal {
+  position: absolute;
+  width: 20px;
+  height: 120px;
+  background: transparent;
+  border: 2px solid #666;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#goal-left {
+  left: 0;
+  border-right: none;
+}
+
+#goal-right {
+  right: 0;
+  border-left: none;
+}
+
+.player {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 600;
+  color: #000;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(255,255,255,0.3);
+  z-index: 5;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.player.team0 {
+  background: #00d4ff;
+  border-color: #00a8cc;
+}
+
+.player.team1 {
+  background: #ff4444;
+  border-color: #cc0000;
+}
+
+.player.has-ball {
+  border: 3px solid #ffd700;
+  box-shadow: 0 0 15px #ffd700;
+  transform: scale(1.15);
+}
+
+.player.goalkeeper::after {
+  content: 'GK';
+  font-size: 8px;
+}
+
+.player.defender::after {
+  content: 'D';
+  font-size: 8px;
+}
+
+.player.midfielder::after {
+  content: 'M';
+  font-size: 8px;
+}
+
+.player.forward::after {
+  content: 'F';
+  font-size: 8px;
+}
+
+#ball {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 10px rgba(255,255,255,0.8);
+  z-index: 10;
+}
+
+/* Events Log */
+.events-log {
+  background: #0a0a0a;
+  padding: 1.5rem;
+  border-radius: 4px;
+  border: 1px solid #1a1a1a;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.events-log h3 {
+  margin-bottom: 1rem;
+  color: #fff;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+#events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.event-item {
+  padding: 0.6rem 1rem;
+  background: #000000;
+  border-radius: 4px;
+  border-left: 3px solid #00ff88;
+  font-size: 0.85rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: #888;
+}
+
+.event-item.goal {
+  border-left-color: #00ff88;
+  background: #0a1a0a;
+  color: #00ff88;
+}
+
+.event-item.foul {
+  border-left-color: #ff4444;
+  background: #1a0a0a;
+  color: #ff4444;
+}
+
+/* Leaderboard */
+.leaderboard-controls {
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.leaderboard-table thead {
+  background: #000000;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.leaderboard-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #888;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: 'Inter', sans-serif;
+}
+
+.leaderboard-table td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid #0a0a0a;
+  color: #e0e0e0;
+  font-family: 'Inter', sans-serif;
+}
+
+.leaderboard-table tbody tr:hover {
+  background: #0a0a0a;
+}
+
+.leaderboard-table tbody tr:first-child {
+  background: #0a1a0a;
+  border-left: 3px solid #00ff88;
+}
+
+.leaderboard-table tbody tr:first-child td {
+  color: #00ff88;
+  font-weight: 600;
+}
+
+.recent-matches {
+  margin-top: 2rem;
+}
+
+.recent-matches h3 {
+  margin-bottom: 1rem;
+  color: #fff;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+#matches-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.match-item {
+  padding: 1rem;
+  background: #0a0a0a;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 3px solid #00ff88;
+  border: 1px solid #1a1a1a;
+  border-left: 3px solid #00ff88;
+}
+
+.match-item:hover {
+  background: #0f0f0f;
+}
+
+/* Prompt Tab */
+.prompt-card {
+  background: #0a0a0a;
+  padding: 2rem;
+  border-radius: 4px;
+  margin-bottom: 2rem;
+  border: 1px solid #1a1a1a;
+}
+
+.prompt-card h3 {
+  margin-bottom: 1rem;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.prompt-info {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.badge {
+  padding: 0.4rem 0.8rem;
+  background: #000000;
+  color: #00ff88;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid #1a1a1a;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+}
+
+#prompt-text {
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  background: #000000;
+  border-radius: 4px;
+  border-left: 3px solid #00ff88;
+  color: #e0e0e0;
+  font-family: 'Inter', sans-serif;
+}
+
+.prompt-leaderboard {
+  margin-top: 2rem;
+}
+
+/* Stats */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.stat-card {
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+  padding: 2rem;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.stat-card h3 {
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+.stat-card p {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #00ff88;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Notifiche */
+.notification {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+.notification-success {
+  background: #00ff88 !important;
+  color: #000 !important;
+}
+
+.notification-error {
+  background: #ff4444 !important;
+  color: #fff !important;
+}
+
+.notification-info {
+  background: #00d4ff !important;
+  color: #000 !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #field {
+    width: 100%;
+    max-width: 600px;
+    height: 360px;
+  }
+
+  .match-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .controls {
+    margin-left: 0;
+    flex-wrap: wrap;
+  }
+
+  .score {
+    font-size: 2rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  header {
+    padding: 1.5rem 1rem;
+  }
+
+  .tab-content {
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* Scrollbar personalizzata */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #333;
+}

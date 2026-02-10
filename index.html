@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LLM Football League</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container" id="app-container" style="display: none;">
+    <header>
+      <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+        <div>
+          <h1>ATLAS</h1>
+          <p class="subtitle">AI vs AI - Neural Networks on the pitch</p>
+        </div>
+        <div style="display: flex; align-items: center; gap: 15px;">
+          <span id="user-info" style="color: #fff; font-size: 0.9em;"></span>
+          <button id="logout-btn" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.9em;">LOGOUT</button>
+        </div>
+      </div>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="match">MATCH</button>
+      <button class="tab-btn" data-tab="leaderboard">LEADERBOARD</button>
+      <button class="tab-btn" data-tab="prompts">PROMPTS</button>
+      <button class="tab-btn" data-tab="stats">STATS</button>
+    </nav>
+
+    <!-- TAB -->
+    <div id="match-tab" class="tab-content active">
+      <div class="match-controls">
+        <div class="team-selector">
+          <label>Squadra 1:</label>
+          <select id="team1-select">
+            <option value="mock"> Mock AI (Gratis)</option>
+            <option value="ollama"> Ollama (Gratis)</option>
+            <option value="groq"> Groq (Gratis)</option>
+            <option value="openai">GPT-4 (A pagamento)</option>
+            <option value="anthropic">Claude (A pagamento)</option>
+            <option value="google">Gemini (A pagamento)</option>
+          </select>
+        </div>
+        <div class="team-selector">
+          <label>Squadra 2:</label>
+          <select id="team2-select">
+            <option value="ollama">Ollama (Gratis)</option>
+            <option value="mock"> Mock AI (Gratis)</option>
+            <option value="groq"> Groq (Gratis)</option>
+            <option value="openai">GPT-4 (A pagamento)</option>
+            <option value="anthropic">Claude (A pagamento)</option>
+            <option value="google">Gemini (A pagamento)</option>
+          </select>
+        </div>
+        <div class="controls">
+          <button id="start-match" class="btn btn-primary">START</button>
+          <button id="reset-match" class="btn btn-secondary">RESET</button>
+          <label class="checkbox-label">
+            <input type="checkbox" id="use-llm" checked>
+            <span>USE LLM</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="match-info">
+        <div class="score">
+          <span id="team1-name">GPT-4</span>
+          <span id="score">0 - 0</span>
+          <span id="team2-name">Claude</span>
+        </div>
+        <div class="match-time">
+          <span>MIN: <span id="minute">0</span>/5</span>
+          <span>TICK: <span id="tick">0</span></span>
+        </div>
+      </div>
+
+      <div id="field-container">
+        <div id="field">
+          <div id="goal-left" class="goal"></div>
+          <div id="goal-right" class="goal"></div>
+          <div id="center-line"></div>
+          <div id="center-circle"></div>
+        </div>
+      </div>
+
+      <div id="events-log" class="events-log">
+        <h3>EVENTS</h3>
+        <div id="events-list"></div>
+      </div>
+    </div>
+
+    <!-- TAB CLASSIFICA -->
+    <div id="leaderboard-tab" class="tab-content">
+      <h2 style="color: #fff; margin-bottom: 1.5rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; font-size: 1.2rem;">LEAGUE TABLE</h2>
+      <div class="leaderboard-controls">
+        <button id="refresh-leaderboard" class="btn btn-primary">REFRESH</button>
+        <button id="simulate-week" class="btn btn-secondary">SIMULATE WEEK</button>
+      </div>
+      <table id="leaderboard-table" class="leaderboard-table">
+        <thead>
+          <tr>
+            <th>Pos</th>
+            <th>Squadra</th>
+            <th>Punti</th>
+            <th>Partite</th>
+            <th>V</th>
+            <th>P</th>
+            <th>S</th>
+            <th>GF</th>
+            <th>GS</th>
+            <th>Diff</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboard-body">
+        </tbody>
+      </table>
+
+      <div id="recent-matches" class="recent-matches">
+        <h3>RECENT MATCHES</h3>
+        <div id="matches-list"></div>
+      </div>
+    </div>
+
+    <!-- TAB PROMPT SETTIMANALI -->
+    <div id="prompts-tab" class="tab-content">
+      <h2 style="color: #fff; margin-bottom: 1.5rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; font-size: 1.2rem;">WEEKLY PROMPTS</h2>
+      <div id="current-prompt" class="prompt-card">
+        <h3>CURRENT PROMPT</h3>
+        <div class="prompt-info">
+          <span class="badge" id="prompt-category">programming</span>
+          <span class="badge" id="prompt-week">Settimana 1</span>
+        </div>
+        <p id="prompt-text">Loading...</p>
+        <button id="submit-response" class="btn btn-primary">SUBMIT RESPONSE</button>
+      </div>
+
+      <div id="prompt-leaderboard" class="prompt-leaderboard">
+        <h3 style="color: #fff; margin-bottom: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; font-size: 1rem;">RANKINGS</h3>
+        <table class="leaderboard-table">
+          <thead>
+            <tr>
+              <th>Pos</th>
+              <th>LLM</th>
+              <th>Punteggio</th>
+              <th>Data</th>
+            </tr>
+          </thead>
+          <tbody id="prompt-leaderboard-body">
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB STATISTICHE -->
+    <div id="stats-tab" class="tab-content">
+      <h2 style="color: #fff; margin-bottom: 1.5rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; font-size: 1.2rem;">STATISTICS</h2>
+      <div id="stats-overview" class="stats-grid">
+        <div class="stat-card">
+          <h3>TOTAL MATCHES</h3>
+          <p id="total-matches">-</p>
+        </div>
+        <div class="stat-card">
+          <h3>TEAMS</h3>
+          <p id="total-teams">-</p>
+        </div>
+        <div class="stat-card">
+          <h3>WEEKLY PROMPTS</h3>
+          <p id="total-prompts">-</p>
+        </div>
+        <div class="stat-card">
+          <h3>CURRENT WEEK</h3>
+          <p id="current-week">-</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="auth-required" style="display: flex; justify-content: center; align-items: center; min-height: 100vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; flex-direction: column; gap: 20px;">
+    <h1 style="font-size: 3em;">ATLAS</h1>
+    <p style="font-size: 1.2em;">Autenticazione richiesta</p>
+    <p>Reindirizzamento al login...</p>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
