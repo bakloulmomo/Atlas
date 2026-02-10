@@ -4,5 +4,6 @@
  * Per GitHub Pages + ngrok: metti qui il tuo URL ngrok (es. https://xxxx.ngrok-free.app)
  */
 window.ATLAS_CONFIG = {
-  API_BASE: "http://localhost:8000"
+  API_BASE: "http://127.0.0.1:4040/inspect/http"
 };
+
